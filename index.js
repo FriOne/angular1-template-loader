@@ -1,5 +1,5 @@
 // using: regex, capture groups, and capture group variables.
-var templateUrlRegex = /templateUrl *=(.*)$/gm;
+var templateUrlRegex = /templateUrl *:(.*)$/gm;
 var stringRegex = /(['"])((?:[^\\]\\\1|.)*?)\1/g;
 
 function replaceStringsWithRequires(string) {
@@ -16,12 +16,12 @@ module.exports = function(source, sourcemap) {
   this.cacheable && this.cacheable();
 
   var newSource = source.replace(templateUrlRegex, function (match, url) {
-                 if (match.indexOf('require(') !== -1) return match;
+    if (match.indexOf('require(') !== -1) return match;
 
-                 // replace: templateUrl = './path/to/template.html'
-                 // with: templateUrl = require('./path/to/template.html')
-                 return "templateUrl =" + replaceStringsWithRequires(url);
-               });
+    // replace: templateUrl = './path/to/template.html'
+    // with: templateUrl = require('./path/to/template.html')
+    return "templateUrl:" + replaceStringsWithRequires(url);
+  });
 
   // Support for tests
   if (this.callback) {
