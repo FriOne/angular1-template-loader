@@ -18,9 +18,9 @@ module.exports = function(source, sourcemap) {
   var newSource = source.replace(templateUrlRegex, function (match, url) {
     if (match.indexOf('require(') !== -1) return match;
 
-    // replace: templateUrl = './path/to/template.html'
-    // with: templateUrl = require('./path/to/template.html')
-    return "templateUrl:" + replaceStringsWithRequires(url);
+    // replace: template: './path/to/template.html'
+    // with: template: require('./path/to/template.html')
+    return "template:" + replaceStringsWithRequires(url);
   });
 
   // Support for tests

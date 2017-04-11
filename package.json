@@ -1,6 +1,6 @@
 {
   "name": "angular1-template-loader",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Backport of the Angulars webpack loader that inlines your angular templates into angular components.  ",
   "main": "index.js",
   "scripts": {
